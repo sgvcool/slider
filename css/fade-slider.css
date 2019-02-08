@@ -1,4 +1,51 @@
-.fade-slider{
+.fade-slider-container{
   display: block;
   position: relative;
 }
+.fade-slider-tabs{
+  position: relative;
+  text-align: center;
+}
+.one-tab{
+  width: 10%;
+  display: inline-block;
+  height: 50px;
+  text-align: center;
+  vertical-align: top;
+  background: #CCC;
+  margin: 0 -3px;
+  border: 1px solid #fff;
+  cursor: pointer;
+}
+.one-tab.active{
+  background: red;
+}
+
+.fade-slider-wrapper-block{
+  position: relative;
+  display: block;
+  height: 200px;
+  border: 1px solid #000;
+  width: 100%;
+}
+.one-kind-slider{
+  position: relative;
+  height: 200px;
+  display: none;
+}
+.one-kind-slider.active{
+  display: block;
+}
+.one-slide{
+  position: absolute;
+  display: block;
+  opacity: 0;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  font-size: 175px;
+  text-align: center;
+  background: green;
+}
+.one-slide.active{opacity: 1;}
