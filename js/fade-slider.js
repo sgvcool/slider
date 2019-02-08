@@ -11,7 +11,7 @@ function init(){
 
 
 
-  tabs          = document.getElementsByClassName("one-tab");
+  tabs        = document.getElementsByClassName("one-tab");
   kindSliders = document.getElementsByClassName("one-kind-slider");
 
 
@@ -35,14 +35,40 @@ function init(){
       this.classList.add("active");
 
       // текущий блок слайдера сделать активным
-      currentSlider = document.getElementById(this.getAttribute("data-id"));
+      var currentSlider = document.getElementById(this.getAttribute("data-id"));
       currentSlider.classList.add("active");
 
       // пересчитать количество слайдов в слайдере
+      var numSlides =  currentSlider.getElementsByClassName('one-slide');
+      if(numSlides.length > 0){
+        paging(numSlides);
+      }
+
       // вывести пейджинг для текущего слайдера
+
       // сделать переход в слайдере по пейджингу
 
     });
   }
 
+}
+
+/**
+ * 
+ * @param {number slides in the slider} slides 
+ */
+function paging(slides){
+  var span;
+  var pagesContainer = document.getElementById("paging");
+
+  this.slides = slides;
+
+  if(this.slides.length > 0){
+    for(var i = 0; i < slides.length; i++){
+      span = document.createElement('span');
+      pagesContainer.appendChild(span);
+    }
+  }
+
+  //document.body.appendChild(pages);
 }
