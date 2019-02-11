@@ -51,4 +51,22 @@
 .one-slide.active{opacity: 1;}
 .paging{
   text-align: center;
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 10px auto;
+  bottom: -40px;
+}
+.paging span{
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: gray;
+  cursor: pointer;
+  margin: 2px 1px;
+}
+.paging span.active{
+  background: red;
 }
