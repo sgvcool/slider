@@ -38,12 +38,68 @@ class FadeSlider{
   }
 
   /**
+   * remove active bull page
+   */
+  removeActivePaging(pagingContainerId){
+
+    this.pagingContainerId = pagingContainerId;
+    this.pages = this.pagingContainerId.children;
+
+    if(this.pages.length > 0){
+      for(var j = 0; j < this.pages.length; j++){
+
+        this.pages[j].classList.remove("active");
+
+      }
+    }
+  }
+
+  /**
+   * remove active slide
+   */
+  removeActiveSlides(sliderConteinerId){
+    this.sliderConteinerId = sliderConteinerId;
+
+    this.slides = document.getElementById(this.sliderConteinerId).getElementsByClassName("one-slide");
+    for(var i = 0; i < this.slides.length; i++){
+      this.slides[i].classList.remove("active");
+    }
+  }
+
+  /**
    * Paging
    */
   paging(sliderItem){
-    //console.log(sliderItem);
 
+    var currentPageContainer = document.getElementById(sliderItem).querySelector(".paging");
 
+    if(currentPageContainer){
+
+      this.pages = currentPageContainer.children;
+      if(this.pages.length > 0){
+        for(var j = 0; j < this.pages.length; j++){
+
+          this.pages[j].addEventListener("click", function(){
+
+            fadeSlider.removeActivePaging(currentPageContainer);
+
+            /**
+             * add active slide and remove active difference
+             */
+            fadeSlider.removeActiveSlides(sliderItem);
+            this.dataId = this.getAttribute("page-data-id");
+            document.getElementById(this.dataId).classList.add("active");
+            
+            
+            /**
+             * add active for bullet
+             */
+            this.classList.add("active");
+          });
+        }
+      }
+
+    }
   }
 
   /**
@@ -79,9 +135,6 @@ class FadeSlider{
       
     }
 
-
-
-
   }
 
 }
@@ -89,6 +142,14 @@ class FadeSlider{
 fadeSlider = new FadeSlider();
 
 window.addEventListener("DOMContentLoaded", fadeSlider.init() );
+
+
+
+
+
+
+
+
 
 /*
 function init(){
@@ -158,27 +219,27 @@ function init(){
 // }
 
 
-function addPaging(id='#kind-1'){
+// function addPaging(id='#kind-1'){
 
-  console.log(id);
+//   console.log(id);
 
 
-  // Пейджинг
-  // var currentPageContainer = document.getElementById(this.getAttribute("data-id")).querySelector(".paging");
+//   // Пейджинг
+//   // var currentPageContainer = document.getElementById(this.getAttribute("data-id")).querySelector(".paging");
 
-  // if(currentPageContainer){
-  //   var pages = currentPageContainer.children;
-  //   if(pages.length > 0){
-  //     for(var j = 0; j < pages.length; j++){
+//   // if(currentPageContainer){
+//   //   var pages = currentPageContainer.children;
+//   //   if(pages.length > 0){
+//   //     for(var j = 0; j < pages.length; j++){
 
-  //       //pages[j].classList.remove("active");
+//   //       //pages[j].classList.remove("active");
 
-  //       pages[j].addEventListener("click", function(){
-  //         // console.log(this);
+//   //       pages[j].addEventListener("click", function(){
+//   //         // console.log(this);
 
-  //         this.classList.add("active");
-  //       });
-  //     }
-  //   }
-  // }
-}
+//   //         this.classList.add("active");
+//   //       });
+//   //     }
+//   //   }
+//   // }
+// }
