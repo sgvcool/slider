@@ -49,18 +49,6 @@
   background: green;
 }
 .one-slide.active{opacity: 1;}
-
 .paging{
   text-align: center;
-}
-.paging span{
-  display: inline-block;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: gray;
-  cursor: pointer;
-}
-.paging span.active{
-  background: red;
 }

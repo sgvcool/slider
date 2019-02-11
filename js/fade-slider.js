@@ -64,11 +64,16 @@ function paging(slides){
   this.slides = slides;
 
   if(this.slides.length > 0){
+
+    //pagesContainer.innerHTML('');
+
     for(var i = 0; i < slides.length; i++){
       span = document.createElement('span');
       pagesContainer.appendChild(span);
+     // pagesContainer.innerHTML(span);
     }
   }
 
-  //document.body.appendChild(pages);
+  //console.log(pagesContainer);
+  document.body.appendChild(pages);
 }
