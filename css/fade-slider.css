@@ -93,7 +93,25 @@
   background: red;
 }
 .rarr-cnt{
-
+  display: block;
 }
-.left-rarr{}
-.right-rarr{}
+.left-rarr{
+  display: block;
+  position: absolute;
+  width: 35px;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background: red;
+  cursor: pointer;
+}
+.right-rarr{
+  display: block;
+  position: absolute;
+  width: 35px;
+  height: 100%;
+  right: 0;
+  top: 0;
+  background: red;
+  cursor: pointer;
+}

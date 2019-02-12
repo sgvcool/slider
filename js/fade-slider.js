@@ -1,7 +1,6 @@
 
 var tabs,
     oneKindSlider,
-    //currentSliderItem = '#kind-1',
     fadeSliderContainer;
 
 class FadeSlider{
@@ -17,6 +16,27 @@ class FadeSlider{
     this.tabs        = document.getElementsByClassName("one-tab");
     this.kindSliders = document.getElementsByClassName("one-kind-slider");
 
+    /**
+     * get slides foe active slider
+     */
+    this.slides = document.getElementById(this.currentSliderItem).getElementsByClassName("one-slide");
+
+    /**
+     * rarr click duraction and move
+     */
+    this.item = 1;
+
+    this.leftRarr   = document.getElementById("left");
+    this.leftRarr.addEventListener("click", function(){
+      this.duraction = 'left';
+      fadeSlider.slideDuraction(this.duraction);
+    });
+
+    this.rightRarr  = document.getElementById("right");
+    this.rightRarr.addEventListener("click", function(){
+      this.duraction = 'right';
+      fadeSlider.slideDuraction(this.duraction);
+    });
   }
 
   /**
@@ -70,7 +90,6 @@ class FadeSlider{
    * Paging
    */
   paging(sliderItem){
-
     var currentPageContainer = document.getElementById(sliderItem).querySelector(".paging");
 
     if(currentPageContainer){
@@ -90,7 +109,7 @@ class FadeSlider{
             this.dataId = this.getAttribute("page-data-id");
             document.getElementById(this.dataId).classList.add("active");
             
-            
+
             /**
              * add active for bullet
              */
@@ -100,6 +119,94 @@ class FadeSlider{
       }
 
     }
+  }
+
+  /**
+   * click rarrs
+   */
+  slideDuraction(duraction){
+    this.duraction = duraction;
+
+    switch(this.duraction){
+
+      case 'left':
+
+        fadeSlider.setActiveSlide(fadeSlider.item, this.duraction);
+
+        if( fadeSlider.item < (fadeSlider.slides.length - 1)){
+          fadeSlider.item++;
+
+          console.log(fadeSlider.item);
+
+          if(fadeSlider.item == (fadeSlider.slides.length - 1) ){
+            fadeSlider.item = 0;
+          }
+
+        }
+        
+        else{
+          fadeSlider.item = 0;
+        }
+
+        
+
+        break;
+
+      case 'right':
+        fadeSlider.setActiveSlide(fadeSlider.item, this.duraction);
+        fadeSlider.item--;
+        break;
+
+    }
+  }
+
+  /**
+   * Set active slide by rarr click
+   */
+  setActiveSlide(index,duraction){
+
+    if(index && duraction){
+
+      this.index      = index;
+      this.duraction  = duraction;
+
+      if(fadeSlider.slides.length > 0){
+        
+        for(var i = 1; i < fadeSlider.slides.length; i++){
+
+          console.log(this.index);
+
+          if( this.index < fadeSlider.slides.length){
+
+            switch(this.duraction){
+
+              case 'left':
+                fadeSlider.removeActiveSlides(fadeSlider.currentSliderItem);
+                fadeSlider.slides[this.index].classList.add("active");
+                break;
+        
+              case 'right':
+
+                if(this.index == 1){
+                  fadeSlider.index = fadeSlider.slides.length;
+                } 
+
+                console.log(fadeSlider.item);
+
+                  //fadeSlider.removeActiveSlides(fadeSlider.currentSliderItem);
+                  //fadeSlider.slides[fadeSlider.index].classList.add("active");
+                break;
+        
+            }
+          }
+      
+        }
+        
+      }
+
+    }
+
+    //console.log(fadeSlider.slides);
   }
 
   /**
@@ -131,115 +238,17 @@ class FadeSlider{
          */
         fadeSlider.paging(this.dataId);
 
-      });
-      
-    }
+        /**
+         * sat current slider
+         */
+        fadeSlider.currentSliderItem = this.dataId;
+        fadeSlider.slides = document.getElementById(this.dataId).getElementsByClassName("one-slide");
 
+      });
+    }
   }
 
 }
 
 fadeSlider = new FadeSlider();
-
 window.addEventListener("DOMContentLoaded", fadeSlider.init() );
-
-
-
-
-
-
-
-
-
-/*
-function init(){
-
-  
-
-
-
-
-
-
-
-
-
-  for(var i = 0; i < tabs.length; i++){
-
-    tabs[i].addEventListener("click", function(){
-
-
-
-      addPaging(this.getAttribute("data-id"));
-      
-
-      
-
-
-
-
-      // пересчитать количество слайдов в слайдере
-      // var numSlides =  currentSlider.getElementsByClassName('one-slide');
-      // if(numSlides.length > 0){
-      //   paging(numSlides);
-      // }
-
-      // вывести пейджинг для текущего слайдера
-
-      // сделать переход в слайдере по пейджингу
-
-    });
-  }
-
-}
-
-/**
- * 
- * @param {number slides in the slider} slides 
- */
-// function paging(slides){
-//   var span;
-//   var pagesContainer = document.getElementById("paging");
-
-//   this.slides = slides;
-
-//   if(this.slides.length > 0){
-
-//     //pagesContainer.innerHTML('');
-
-//     for(var i = 0; i < slides.length; i++){
-//       span = document.createElement('span');
-//       pagesContainer.appendChild(span);
-//      // pagesContainer.innerHTML(span);
-//     }
-//   }
-
-//   //console.log(pagesContainer);
-//   document.body.appendChild(pages);
-// }
-
-
-// function addPaging(id='#kind-1'){
-
-//   console.log(id);
-
-
-//   // Пейджинг
-//   // var currentPageContainer = document.getElementById(this.getAttribute("data-id")).querySelector(".paging");
-
-//   // if(currentPageContainer){
-//   //   var pages = currentPageContainer.children;
-//   //   if(pages.length > 0){
-//   //     for(var j = 0; j < pages.length; j++){
-
-//   //       //pages[j].classList.remove("active");
-
-//   //       pages[j].addEventListener("click", function(){
-//   //         // console.log(this);
-
-//   //         this.classList.add("active");
-//   //       });
-//   //     }
-//   //   }
-//   // }
-// }
