@@ -13,6 +13,8 @@ class FadeSlider{
     this.currentSliderItem = currentSliderItem;
     this.paging(this.currentSliderItem);
 
+    this.pages = document.getElementById(this.currentSliderItem).querySelector(".paging").children;
+  
     this.tabs        = document.getElementsByClassName("one-tab");
     this.kindSliders = document.getElementsByClassName("one-kind-slider");
 
@@ -131,13 +133,11 @@ class FadeSlider{
     this.duraction = duraction;
 
     switch(this.duraction){
-
       case 'left':
 
         fadeSlider.item++;
 
         if( fadeSlider.item >= fadeSlider.slides.length){ fadeSlider.item = (fadeSlider.slides.length -1);}
-
         if( fadeSlider.item < fadeSlider.slides.length){
           fadeSlider.setActiveSlide(fadeSlider.item, this.duraction);
         }
@@ -146,11 +146,10 @@ class FadeSlider{
       case 'right':
 
         fadeSlider.item--;
-        
+
         if( fadeSlider.item <= 0 ){ fadeSlider.item = 0;}
         fadeSlider.setActiveSlide(fadeSlider.item, this.duraction);
         break;
-
     }
   }
 
@@ -168,8 +167,25 @@ class FadeSlider{
         for(var i = 1; i < fadeSlider.slides.length; i++){
 
           if( this.index < fadeSlider.slides.length){
+
+            /**
+             * add active slide
+             */
             fadeSlider.removeActiveSlides(fadeSlider.currentSliderItem);
             fadeSlider.slides[fadeSlider.index].classList.add("active");
+
+            /**
+             * remove active for bullets in click to rarr
+            */ 
+            for(var j = 0; j < fadeSlider.pages.length; j++){
+              fadeSlider.pages[j].classList.remove("active");
+            }
+
+            /** 
+             * add active status for bullet with click to rarr
+             */
+            fadeSlider.pages[fadeSlider.index].classList.add("active");
+        
           }
       
         }
@@ -177,8 +193,6 @@ class FadeSlider{
       }
 
     }
-
-    //console.log(fadeSlider.slides);
   }
 
   /**
