@@ -41,7 +41,7 @@ class FadeSlider{
     });
 
     this.leftRarrClass  = 'active';
-    this.rightRarrClass = 'active';
+    this.rightRarrClass = 'no-active';
   }
 
   /**
@@ -137,7 +137,10 @@ class FadeSlider{
 
         fadeSlider.item++;
 
-        if( fadeSlider.item >= fadeSlider.slides.length){ fadeSlider.item = (fadeSlider.slides.length -1);}
+        if( fadeSlider.item >= fadeSlider.slides.length){ 
+          fadeSlider.item = (fadeSlider.slides.length -1);
+        }
+
         if( fadeSlider.item < fadeSlider.slides.length){
           fadeSlider.setActiveSlide(fadeSlider.item, this.duraction);
         }
@@ -147,7 +150,11 @@ class FadeSlider{
 
         fadeSlider.item--;
 
-        if( fadeSlider.item <= 0 ){ fadeSlider.item = 0;}
+        if( fadeSlider.item <= 0 ){ 
+          fadeSlider.item = 0;
+          fadeSlider.rightRarrClass = 'no-active';
+        };
+
         fadeSlider.setActiveSlide(fadeSlider.item, this.duraction);
         break;
     }

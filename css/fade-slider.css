@@ -95,23 +95,35 @@
 .rarr-cnt{
   display: block;
 }
-.left-rarr{
+.left-rarr, .left-rarr.no-active{
   display: block;
   position: absolute;
   width: 35px;
   height: 100%;
   left: 0;
   top: 0;
-  background: red;
-  cursor: pointer;
+  background: gray;
+  cursor: default;
+  opacity: 0.7;
 }
-.right-rarr{
+.left-rarr.active{
+  cursor: pointer;
+  opacity: 1;
+  background: red;
+}
+.right-rarr, .right-rarr.no-active{
   display: block;
   position: absolute;
   width: 35px;
   height: 100%;
   right: 0;
   top: 0;
-  background: red;
+  background: gray;
+  cursor: default;
+  opacity: 0.7;
+}
+.right-rarr.active{
   cursor: pointer;
+  opacity: 1;
+  background: red;
 }
