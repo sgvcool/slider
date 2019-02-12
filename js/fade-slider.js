@@ -24,7 +24,7 @@ class FadeSlider{
     /**
      * rarr click duraction and move
      */
-    this.item = 1;
+    this.item = 0;
 
     this.leftRarr   = document.getElementById("left");
     this.leftRarr.addEventListener("click", function(){
@@ -37,6 +37,9 @@ class FadeSlider{
       this.duraction = 'right';
       fadeSlider.slideDuraction(this.duraction);
     });
+
+    this.leftRarrClass  = 'active';
+    this.rightRarrClass = 'active';
   }
 
   /**
@@ -131,30 +134,21 @@ class FadeSlider{
 
       case 'left':
 
-        fadeSlider.setActiveSlide(fadeSlider.item, this.duraction);
+        fadeSlider.item++;
 
-        if( fadeSlider.item < (fadeSlider.slides.length - 1)){
-          fadeSlider.item++;
+        if( fadeSlider.item >= fadeSlider.slides.length){ fadeSlider.item = (fadeSlider.slides.length -1);}
 
-          console.log(fadeSlider.item);
-
-          if(fadeSlider.item == (fadeSlider.slides.length - 1) ){
-            fadeSlider.item = 0;
-          }
-
+        if( fadeSlider.item < fadeSlider.slides.length){
+          fadeSlider.setActiveSlide(fadeSlider.item, this.duraction);
         }
-        
-        else{
-          fadeSlider.item = 0;
-        }
-
-        
-
         break;
 
       case 'right':
-        fadeSlider.setActiveSlide(fadeSlider.item, this.duraction);
+
         fadeSlider.item--;
+        
+        if( fadeSlider.item <= 0 ){ fadeSlider.item = 0;}
+        fadeSlider.setActiveSlide(fadeSlider.item, this.duraction);
         break;
 
     }
@@ -164,8 +158,7 @@ class FadeSlider{
    * Set active slide by rarr click
    */
   setActiveSlide(index,duraction){
-
-    if(index && duraction){
+    if( (index >=0) && duraction){
 
       this.index      = index;
       this.duraction  = duraction;
@@ -174,30 +167,9 @@ class FadeSlider{
         
         for(var i = 1; i < fadeSlider.slides.length; i++){
 
-          console.log(this.index);
-
           if( this.index < fadeSlider.slides.length){
-
-            switch(this.duraction){
-
-              case 'left':
-                fadeSlider.removeActiveSlides(fadeSlider.currentSliderItem);
-                fadeSlider.slides[this.index].classList.add("active");
-                break;
-        
-              case 'right':
-
-                if(this.index == 1){
-                  fadeSlider.index = fadeSlider.slides.length;
-                } 
-
-                console.log(fadeSlider.item);
-
-                  //fadeSlider.removeActiveSlides(fadeSlider.currentSliderItem);
-                  //fadeSlider.slides[fadeSlider.index].classList.add("active");
-                break;
-        
-            }
+            fadeSlider.removeActiveSlides(fadeSlider.currentSliderItem);
+            fadeSlider.slides[fadeSlider.index].classList.add("active");
           }
       
         }
