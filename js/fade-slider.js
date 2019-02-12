@@ -209,35 +209,38 @@ class FadeSlider{
 
     for(var i = 0; i < this.tabs.length; i++){
 
-      this.tabs[i].addEventListener("click", function(){
+      if( this.tabs[i].classList.contains('active')){
 
-        /**
-         * add active tabs
-         */
-        fadeSlider.removeActiveTab();
-        this.classList.add("active");
+        this.tabs[i].addEventListener("click", function(){
 
-        /**
-         * add active slider Container
-         */
-        fadeSlider.removeActiveSlider();
-        this.dataId = this.getAttribute("data-id");
+          /**
+           * add active tabs
+           */
+          fadeSlider.removeActiveTab();
+          this.classList.add("active");
 
-        var currentSlider = document.getElementById(this.dataId);
-        currentSlider.classList.add("active");
-        
-        /**
-         * add paging for current slider
-         */
-        fadeSlider.paging(this.dataId);
+          /**
+           * add active slider Container
+           */
+          fadeSlider.removeActiveSlider();
+          this.dataId = this.getAttribute("data-id");
 
-        /**
-         * sat current slider
-         */
-        fadeSlider.currentSliderItem = this.dataId;
-        fadeSlider.slides = document.getElementById(this.dataId).getElementsByClassName("one-slide");
+          var currentSlider = document.getElementById(this.dataId);
+          currentSlider.classList.add("active");
+          
+          /**
+           * add paging for current slider
+           */
+          fadeSlider.paging(this.dataId);
 
-      });
+          /**
+           * sat current slider
+           */
+          fadeSlider.currentSliderItem = this.dataId;
+          fadeSlider.slides = document.getElementById(this.dataId).getElementsByClassName("one-slide");
+
+        });
+      }
     }
   }
 
