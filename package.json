@@ -1,0 +1,44 @@
+{
+  "name": "fruitautomatengokkasten_net",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://gitlab-int-v.lucky-labs.com/templates/fruitautomatengokkasten.net.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "browser-sync": "^2.26.7",
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^6.0.0",
+    "gulp-babel": "^8.0.0",
+    "gulp-cache": "^1.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-cssnano": "^2.0.0",
+    "gulp-csso": "^2.0.0",
+    "gulp-eslint": "^5.0.0",
+    "gulp-ext-replace": "^0.3.0",
+    "gulp-imagemin": "^6.0.0",
+    "gulp-remember": "^1.0.1",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-uglify-es": "^1.0.4",
+    "gulp-uglifyjs": "^0.6.2",
+    "gulp-webp": "^4.0.1",
+    "gulp.spritesmith": "^6.10.1",
+    "imagemin-advpng": "^5.0.0",
+    "imagemin-pngquant": "^6.0.0",
+    "imagemin-webp": "^5.1.0",
+    "merge-stream": "^1.0.1",
+    "vinyl-buffer": "^1.0.1"
+  }
+}
