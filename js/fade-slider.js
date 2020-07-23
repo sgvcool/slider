@@ -9,7 +9,7 @@ class FadeSlider{
         this.paging(this.currentSliderItem);
         this.pages = document.getElementById(this.currentSliderItem).querySelector(".paging").children;
 
-        this.tabs        = document.getElementsByClassName("one-tab");
+        this.tabs = document.getElementsByClassName("one-tab");
         this.kindSliders = document.getElementsByClassName("one-kind-slider");
 
         /**
