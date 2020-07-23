@@ -1,5 +1,3 @@
-"use strict";
-
 class FadeSlider{
 
     constructor(currentSliderItem = 'kind1'){
